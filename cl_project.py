@@ -65,6 +65,7 @@ class Project(Model):
                     return 'Проект успешно создан!\n'
 
                 else:
+                    Contract.lst_contract_ids.clear()
                     return Contract.error_messages["invalid_contract_number"]
 
             else:
@@ -114,9 +115,11 @@ class Project(Model):
                     return 'Проект успешно обновлен!\n'
 
                 else:
+                    Contract.lst_contract_ids.clear()
                     return Contract.error_messages["invalid_contract_number"]
 
             else:
+                cls.lst_project_ids.clear()
                 return cls.error_messages["invalid_project_number"]
 
         elif not projects:
@@ -153,6 +156,7 @@ class Project(Model):
                 return "Договор в выбранном проекте завершен!\n"
 
             else:
+                cls.lst_project_ids.clear()
                 return cls.error_messages["invalid_project_number"]
 
         else:
