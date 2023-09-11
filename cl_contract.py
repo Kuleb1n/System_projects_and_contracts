@@ -67,6 +67,7 @@ class Contract(Model):
                 contract_confirmation.save()
                 return f'Договор: {contract_confirmation.contract_name} успешно подтвержден!'
             else:
+                cls.lst_contract_ids.clear()
                 return cls.error_messages["invalid_contract_number"]
         else:
             return 'Нет договоров для подтверждения.\n'
@@ -93,6 +94,7 @@ class Contract(Model):
                 return f'Договор: {contract_confirmation.contract_name} успешно завершен!'
 
             else:
+                cls.lst_contract_ids.clear()
                 return cls.error_messages["invalid_contract_number"]
 
         else:
